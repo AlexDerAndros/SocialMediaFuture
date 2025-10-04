@@ -1,3 +1,5 @@
 body {
     background: #1f1f1f;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
