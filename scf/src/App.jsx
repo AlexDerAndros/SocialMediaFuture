@@ -58,7 +58,7 @@ export default function App() {
   };
   const checkAlert = () => {
     if(localStorage.getItem("alert") == "true"){
-       gsap.fromTo(alertRef.current, {x:-200, opacity: 0}, {x: 350, opacity: 1, duration: 1, ease: "power3.inOut"});
+       gsap.fromTo(alertRef.current, {xPercent:-40, yPercent: -10,  opacity: 0}, {xPercent: 40 , yPercent: -10,opacity: 1, duration: 1, ease: "power3.inOut"});
        setDtd(true);
     }else {
       setDtd(false);
@@ -75,11 +75,9 @@ export default function App() {
     <div className="flex flex-row w-full">
       <div className="w-1/5 h-screen p-5 flex flex-col  items-left
        gap-y-20 bg-sidebar text-white text-xl font-inter ">
-        <Link to="/">
          <div className="font-poppins text-2xl font-bold ">
           Learning App
          </div>
-        </Link>
         <div className="flex flex-col gap-y-5 cursor-pointer">
         <Link to="/User1">
            <div className={user1 == true && user2 == false ? `text-white` : `text-mainBg`} onClick={pressUser1}>
@@ -120,18 +118,25 @@ export default function App() {
   );
   };
 
-function Home() {
-  return(
-    <>
-    </>
-  );
-};
+
 function Quiz() {
   const {currentUser} = useContext(QuizContext);
+  const questions = [
+    {},
+    {}, 
+    {},
+    {},
+    {}
+  ];
   return (
-    <div className="text-white font-inter p-10 flex flex-col items-left w-full ">
+    <div className="text-white font-inter p-10 flex flex-col items-center w-full ">
        <div className="text-3xl font-bold">
          Quiz {currentUser}
+       </div>
+       <div className="w-4/5 h-140 flex flex-col items-center mt-10 p-3 bg-sidebar rounded-xl ">
+          <span className="font-bold">
+           Task: Please answer the quiz questions by choosing the correct answer.
+          </span>
        </div>
     </div>
   );
